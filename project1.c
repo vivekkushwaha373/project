@@ -1,12 +1,12 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
-// #include<ncurses>
 #include<time.h>
+void fun(int [][4],char []);
 void swap(int*,int*);
-int arr[4][4],v=0,c,count=0,d,str[16],k=0;char prr[20],a;
-void fun()
-    {
+
+void fun(int arr[][4],char prr[])
+    {int v=0,c,count=0,d,str[16],k=0;char a;
     for(int j=0;j<4;j++)
 {
     for(int i=0;i<4;i++)
@@ -50,9 +50,12 @@ void fun()
         printf("\n");
     }
     printf("---------------------\n");
-   
+   int move=20;
     for(int u=0;u<20;u++)
     { 
+    printf("     Hello %s, Move remaing: %d\n\n",prr,move);
+    move-=1;
+    printf("---------------------\n");
         getch();//this will return zero
         a=getch();
         // if(u!=0)
@@ -216,14 +219,10 @@ void fun()
     printf("YOU LOSE !\n");
     
     }
-int main()
-{
-
-printf("Player name: ");
-gets(prr);
-srand(time(NULL));
-
-    printf("              RULE OF THIS GAME\n\n");
+    void gamerule()
+    {
+        system("cls");
+         printf("              RULE OF THIS GAME\n\n");
     printf("1.You can move only 1 step at a time by arrow key\n\n");
     printf("Move up    : by up arrow key\n");
     printf("Move down  : by down arrow key\n");
@@ -240,27 +239,38 @@ srand(time(NULL));
     printf("| 13 | 14 | 15 |    |\n");
     printf("---------------------\n");
     printf("\n");
-    printf("you can exit the game any time by pressing 'E' and 'e'\n");
     printf("So try to win in minimum number of move\n");
     printf("\n");
     printf("              Happy Gaming, Good Luck\n");
     printf("Enter any key to start....   ");
     getch();
-    
+    system("cls");
+    }
+
+int main()
+{
+int arr[4][4];
+char prr[20];
+char a;
+printf("Player name: ");
+gets(prr);
+srand(time(NULL));
+gamerule();
+system("cls");
     printf("\n\n");
-    printf("     Hello %s, Move remaing: 20\n\n",prr);
-    printf("---------------------\n");
-    fun();
+    
+    fun(arr,prr);
  while(1)
 {
 
 printf("enter a key ");
 scanf("%c",&a);
-getchar();
-if((int)a==121)
-{fun();
+printf("%d",a);
+if(a==121)
+{
+    fun(arr,prr);
 // i don't know is this not running further
-continue;}
+}
 else
 break;
 }
